@@ -22,13 +22,14 @@
                 <li><a data-toggle="tab" href="#frontpage">Frontpage</a></li>
                 <li><a data-toggle="tab" href="#localstorage">Local Storage</a></li>
                 <li><a data-toggle="tab" href="#svg">SVG</a></li>
+                <li><a data-toggle="tab" href="#gps">Hvor er jeg</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="tab-content container">
-    <div class="tab-pane active" id="frontpage">
+    <div class="tab-pane" id="frontpage">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Frontpage
@@ -64,6 +65,16 @@
                 </div>
             </div>
         </div>
+    <div class="tab-pane" id="gps">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                You are Here Fool
+            </div>
+            <div class="panel-body" id="me">
+                <p id="location"></p>
+                <div id="mapholder"></div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="visitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -84,7 +95,10 @@
     </div>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="js/myJs.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo7nFkoUthlGms4De0miS4EPfupB5x0cY"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/myJs.js"></script>
+<script type="text/javascript" src="js/location.js"></script>
 </html>
