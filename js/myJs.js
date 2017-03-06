@@ -2,25 +2,31 @@
  * Created by gudni on 06-03-2017.
  */
 
-var timeLog;
-$(function(){
-    var log = new Date();
-    timeLog = log.getHours() + ":" + log.getMinutes() + ":" + log.getSeconds();
-    $("#showTime").html(timeLog);
+if (localStorage.visits) {
+} else {
+    localStorage.visits = JSON.stringify([]);
+}
 
-    visitLog(timeLog);
+$(function() {
+    var visits = JSON.parse(localStorage.visits);
+    if (visits.length > 15) {
+        visits.pop();
+    }
+    var time = new Date();
+    var log = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds() + "<br>";
+    visits.push(log);
+    setModalContent(visits);
+    localStorage.visits = JSON.stringify(visits);
+    document.getElementById("showTime").innerHTML = visits + "<br>";
 });
 
-function visitLog(timeLog){
-
-    if(typeof(Storage) !== "undefined"){
-        if(localStorage.visitlog){
-            localStorage.visitlog = localStorage.visitlog + "<br>" + timeLog;
-        }else{
-            localStorage.visitlog = timeLog;
-        }
-        document.getElementById("showTime").innerHTML = "You have seen this shit " + localStorage.visitlog;
-    }else {
-        document.getElementById("showTime").innerHTML = "Shit does not work";
-    }
+function setModalContent(content) {
+    var html = "<div class='text-center'>";
+    content.reverse().forEach(function (text) {
+        html += text;
+    })
+    html += "</div>";
+    $('#modalContent').html(html);
+    $('#visitModal').modal("show")
+    content.reverse();
 }
